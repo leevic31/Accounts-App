@@ -1,0 +1,67 @@
+<h1><%= @accounts.name %></h1>
+
+<ul>
+  <li><%= link_to "Edit Account", edit_account_path(@accounts) %></li>
+
+  <li><%= link_to "Delete Account", account_path(@accounts),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+
+
+<h2>Transactions</h2>
+
+<ul>
+  <% @accounts.transactions.each do |transaction| %>
+    <li>
+      <a href="/transactions/<%= transaction.id %>">
+        <%= "Amount: " %>
+        <%= transaction.amount %>
+        <%= "| Date: " %>
+        <%= transaction.date %>
+        <%= "| Description: " %>
+        <%= transaction.description %>
+        <%= "| Bank ID: " %>
+        <%= transaction.bank_id %>
+        <%= "| Created at: " %>
+        <%= transaction.created_at %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Add a transaction:</h3>
+
+<%= form_with model: [ @accounts, @accounts.transactions.build ] do |form| %>
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :date %> <%= "(yyyy-mm-dd)" %> <br>
+    <%= form.text_area :date %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :bank_id %><br>
+    <%= form.select :bank_id, options_for_select(Bank.all.map{|bank|[bank.name, bank.id]}) %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<p><%= link_to "Get Transaction Total", accounts_total_path %></p>
+
+<p><%= link_to "Get Transaction Duplicates", accounts_flag_path %></p>
+
+<p><%= link_to "Go back to Accounts page", accounts_path %></p>
+

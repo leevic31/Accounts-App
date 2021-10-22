@@ -1,0 +1,16 @@
+<h1>Amount : <%= @transactions.amount %></h1>
+<h1>Date : <%= @transactions.date %></h1>
+<h1>Description : <%= @transactions.description %></h1>
+<h1>Bank : <%= @banks.name %> </h1>
+
+<ul>
+  <li><%= link_to "Edit Transaction", edit_transaction_path(@transactions) %></li><br>
+
+  <li><%= link_to "Delete Transaction", transaction_path(@transactions),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %></li><br>
+
+  <li><%= link_to "Go back to account", account_path(@transactions.account_id) %></li><br>
+
+</ul>
+

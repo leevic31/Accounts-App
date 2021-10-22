@@ -1,0 +1,12 @@
+<h1><%= @banks.name %></h1>
+
+<ul>
+  <li><%= link_to "Edit Bank", edit_bank_path(@banks) %></li>
+
+  <li><%= link_to "Delete Bank", bank_path(@banks),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+
+  <li><%= link_to "Go back to Banks page", banks_path %></li>
+
+</ul>

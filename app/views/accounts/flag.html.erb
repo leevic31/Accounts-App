@@ -1,0 +1,14 @@
+<h1>Flags</h1>
+
+<ul>
+    <% @duplicates.each do |transaction| %>
+        <li>
+            <%= "Description: " %>
+            <%= transaction.description %>
+            <%= "| Amount: " %>
+            <%= transaction.amount %>
+            <%= "| Created At: " %>
+            <%= transaction.created_at %>
+        </li>
+    <% end %>
+</ul>

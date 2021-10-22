@@ -1,0 +1,13 @@
+<h1>Banks</h1>
+
+<ul>
+  <% @banks.each do |bank| %>
+    <li>
+        <a href="<%= bank_path(bank) %>">
+            <%= bank.name %>
+        </a>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Bank", new_bank_path %>
