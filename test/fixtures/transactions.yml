@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  transaction: MyString
   amount: 9.99
   date: 2021-10-21 00:07:37
   description: MyText
   bank: one
+  account_id: 1
 
 two:
-  transaction: MyString
   amount: 9.99
   date: 2021-10-21 00:07:37
   description: MyText
   bank: two
+  account_id: 1

@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  bank: one
 
 two:
   name: MyString
-  bank: two
