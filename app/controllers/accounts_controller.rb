@@ -49,10 +49,10 @@ class AccountsController < ApplicationController
 
   def flag
     @accounts = Account.find(params[:id])
-    transaction_list =  @accounts.transactions.order("created_at ASC")
+    transaction_list =  @accounts.transactions.order("amount, created_at, description")
     transaction_list_size = @accounts.transactions.size
     @duplicates = Set.new
-
+    
     transaction_list.each_with_index do |t, i|
       if i < transaction_list_size - 1
         if (t.description == transaction_list[i+1].description) && 
@@ -63,7 +63,6 @@ class AccountsController < ApplicationController
         end
       end
     end
-  
   end
 
   private
