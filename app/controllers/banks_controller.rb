@@ -4,33 +4,33 @@ class BanksController < ApplicationController
   end
 
   def show
-    @banks = Bank.find(params[:id])
+    @bank = Bank.find(params[:id])
   end
 
   def new
-    @banks = Bank.new
+    @bank = Bank.new
   end
 
   def create
-    @banks = Bank.new(bank_params)
+    @bank = Bank.new(bank_params)
 
-    if @banks.save
-      redirect_to @banks
+    if @bank.save
+      redirect_to @bank
     else
       render :new
     end
   end
 
   def edit
-    @banks = Bank.find(params[:id])
+    @bank = Bank.find(params[:id])
   end
 
 
   def update
-    @banks = Bank.find(params[:id])
+    @bank = Bank.find(params[:id])
 
-    if @banks.update(bank_params)
-      redirect_to @banks
+    if @bank.update(bank_params)
+      redirect_to @bank
     else
       render :edit
     end
@@ -38,8 +38,8 @@ class BanksController < ApplicationController
 
 
   def destroy
-    @banks = Bank.find(params[:id])
-    @banks.destroy
+    @bank = Bank.find(params[:id])
+    @bank.destroy
 
     redirect_to banks_path
   end
