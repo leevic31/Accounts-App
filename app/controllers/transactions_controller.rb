@@ -4,39 +4,39 @@ class TransactionsController < ApplicationController
     end
 
     def show
-        @transactions = Transaction.find(params[:id])
-        @banks = Bank.find(Transaction.find(params[:id]).bank_id)
+        @transaction = Transaction.find(params[:id])
+        @bank = Bank.find(Transaction.find(params[:id]).bank_id)
     end
 
     def new
-        @transactions = Transaction.new
+        @transaction = Transaction.new
       end
     
       def create
-        @accounts = Account.find(params[:account_id])
-        @transactions = @accounts.transactions.create(transaction_params)
-        redirect_to account_path(@accounts)
+        @account = Account.find(params[:account_id])
+        @transaction = @account.transactions.create(transaction_params)
+        redirect_to account_path(@account)
       end
 
       def edit
-        @transactions = Transaction.find(params[:id])
+        @transaction = Transaction.find(params[:id])
       end
     
       def update
-        @transactions = Transaction.find(params[:id])
+        @transaction = Transaction.find(params[:id])
     
-        if @transactions.update(transaction_params)
-          redirect_to @transactions
+        if @transaction.update(transaction_params)
+          redirect_to @transaction
         else
           render :edit
         end
       end
 
       def destroy
-        @transactions = Transaction.find(params[:id])
-        @accounts = @transactions.account_id
-        @transactions.destroy
-        redirect_to account_path(@accounts)
+        @transaction = Transaction.find(params[:id])
+        @account = @transaction.account_id
+        @transaction.destroy
+        redirect_to account_path(@account)
       end
 
       private
