@@ -4,53 +4,53 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @accounts = Account.find(params[:id])
+    @account = Account.find(params[:id])
   end
 
   def new
-    @accounts = Account.new
+    @account = Account.new
   end
 
   def create
-    @accounts = Account.new(account_params)
+    @account = Account.new(account_params)
 
-    if @accounts.save
-      redirect_to @accounts
+    if @account.save
+      redirect_to @account
     else
       render :new
     end
   end
 
   def edit
-    @accounts = Account.find(params[:id])
+    @account = Account.find(params[:id])
   end
 
 
   def update
-    @accounts = Account.find(params[:id])
+    @account = Account.find(params[:id])
 
-    if @accounts.update(account_params)
-      redirect_to @accounts
+    if @account.update(account_params)
+      redirect_to @account
     else
       render :edit
     end
   end
 
   def destroy
-    @accounts = Account.find(params[:id])
-    @accounts.destroy
+    @account = Account.find(params[:id])
+    @account.destroy
 
     redirect_to accounts_path
   end
 
   def total
-    @accounts = Account.find(params[:id])
+    @account = Account.find(params[:id])
   end
 
   def flag
-    @accounts = Account.find(params[:id])
-    transaction_list =  @accounts.transactions.order("amount, created_at, description")
-    transaction_list_size = @accounts.transactions.size
+    @account = Account.find(params[:id])
+    transaction_list =  @account.transactions.order("amount, created_at, description")
+    transaction_list_size = @account.transactions.size
     @duplicates = Set.new
     
     transaction_list.each_with_index do |t, i|

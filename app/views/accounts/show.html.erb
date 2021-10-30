@@ -1,9 +1,9 @@
-<h1><%= @accounts.name %></h1>
+<h1><%= @account.name %></h1>
 
 <ul>
-  <li><%= link_to "Edit Account", edit_account_path(@accounts) %></li>
+  <li><%= link_to "Edit Account", edit_account_path(@account) %></li>
 
-  <li><%= link_to "Delete Account", account_path(@accounts),
+  <li><%= link_to "Delete Account", account_path(@account),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
@@ -13,7 +13,7 @@
 <h2>Transactions</h2>
 
 <ul>
-  <% @accounts.transactions.each do |transaction| %>
+  <% @account.transactions.each do |transaction| %>
     <li>
       <a href="/transactions/<%= transaction.id %>">
         <%= "Amount: " %>
@@ -33,7 +33,7 @@
 
 <h3>Add a transaction:</h3>
 
-<%= form_with model: [ @accounts, @accounts.transactions.build ] do |form| %>
+<%= form_with model: [ @account, @account.transactions.build ] do |form| %>
   <div>
     <%= form.label :amount %><br>
     <%= form.text_field :amount %>
