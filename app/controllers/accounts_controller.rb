@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
   end
 
   def total
-    @account = Account.find(params[:id])
+    @account_total = Account.find(params[:id]).transactions.sum(:amount)
   end
 
   def flag
